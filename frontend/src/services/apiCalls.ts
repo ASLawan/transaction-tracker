@@ -34,7 +34,7 @@ export const getTransaction = async (id: string) => {
 
 // Create a transaction
 export const createTransaction = async (transaction: Transaction) => {
-  const response = await api.post("/", transaction);
+  const response = await api.post("/create", transaction);
 
   return response.data;
 };
