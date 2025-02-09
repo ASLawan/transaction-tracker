@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import { testDBConnection } from "./config/conn";
-import { testTransaction } from "./createTransaction";
+import transactionRoutes from "./routes/transactionRoutes";
 
 dotenv.config(); // retrieve env variables from .env file
 
@@ -22,6 +22,9 @@ testDBConnection();
 app.get("/", (req, res) => {
   res.send("Transaction Tracking Systen API");
 });
+
+// transaction Routes
+app.use("/api/transactions/", transactionRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on ${HOST}, port: ${PORT} `);
