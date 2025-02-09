@@ -6,11 +6,11 @@ import { stat } from "fs";
 // Create a new transaction
 export const createTransaction = async (req: Request, res: Response) => {
   try {
-    const { value, timeStamp, receiver, sender } = req.body;
+    const { value, timestamp, receiver, sender } = req.body;
 
     const newTransaction = await Transaction.create({
       value,
-      timeStamp,
+      timestamp,
       receiver,
       sender,
     });
