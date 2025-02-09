@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllTransactions } from "../services/apiCalls";
+import { Link } from "react-router-dom";
 
 // type definition for transactions to be fetched
 
@@ -44,6 +45,7 @@ const Dashboard: React.FC = () => {
             <th>Value</th>
             <th>Timestamp</th>
             <th>Confirmed</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +55,12 @@ const Dashboard: React.FC = () => {
               <th>{transaction.receiver}</th>
               <th>{transaction.value}</th>
               <th>{transaction.timestamp}</th>
-              <th>{transaction.confirmed}</th>
+              <th>{`${transaction.confirmed ? "Yes" : "No"} `}</th>
+              <th>
+                <Link to={`/detail-transaction/${transaction.id}`}>
+                  Details
+                </Link>
+              </th>
             </tr>
           ))}
         </tbody>

@@ -27,7 +27,7 @@ export const getAllTransactions = async () => {
 
 // Get one transaction
 export const getTransaction = async (id: string) => {
-  const response = await api.get(`/${id}`);
+  const response = await api.get(`/getOne/${id}`);
 
   return response.data;
 };
