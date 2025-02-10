@@ -86,25 +86,25 @@ export const updateTransaction = async (req: Request, res: Response) => {
 // Get all transactions
 export const getTransactions = async (req: Request, res: Response) => {
   try {
-    // Implement search feature - get search term
-    const { search } = req.query;
-    let whereCondition = {};
+    // // Implement search feature - get search term
+    // const { search } = req.query;
+    // let whereCondition = {};
 
-    // console.log(search);
+    // // console.log(search);
 
-    if (search) {
-      whereCondition = {
-        [Op.or]: [
-          { id: { [Op.iLike]: `%${search}%` } },
-          { sender: { [Op.iLike]: `%${search}%` } },
-          { receiver: { [Op.iLike]: `%${search}%` } },
-          { value: isNaN(Number(search)) ? Number(search) : undefined },
-        ],
-      };
-    }
+    // if (search) {
+    //   whereCondition = {
+    //     [Op.or]: [
+    //       { id: { [Op.iLike]: `%${search}%` } },
+    //       { sender: { [Op.iLike]: `%${search}%` } },
+    //       { receiver: { [Op.iLike]: `%${search}%` } },
+    //       { value: isNaN(Number(search)) ? Number(search) : undefined },
+    //     ],
+    //   };
+    // }
 
     // get transctions
-    const transactions = await Transaction.findAll({ where: whereCondition });
+    const transactions = await Transaction.findAll();
 
     // handle 404 error
     if (!transactions) {

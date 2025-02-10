@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import TransactionForm from "./pages/TransactionForm";
 import TransactionDetails from "./pages/TransactionDetails";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./App.css";
 import "./index.css";
 
@@ -18,6 +19,7 @@ function App() {
           element={<TransactionDetails />}
         />
       </Routes>
+      <Footer />
     </Router>
   );
 }
