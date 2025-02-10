@@ -19,8 +19,8 @@ export const api = axios.create({
 });
 
 // Get all transactions from the database
-export const getAllTransactions = async (search: string = "") => {
-  const response = await api.get("/getAll", { params: { search: search } });
+export const getAllTransactions = async () => {
+  const response = await api.get("/getAll");
 
   return response.data;
 };

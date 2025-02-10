@@ -36,6 +36,10 @@ const TransactionForm: React.FC = () => {
       }, 5000);
     } catch (error) {
       setError("Error Creating Transaction");
+      //   clear form fields upon failure or success
+      setValue(0);
+      setSender("");
+      setReceiver("");
       console.log(error);
 
       //   Clear error message after 5 minutes
@@ -51,13 +55,21 @@ const TransactionForm: React.FC = () => {
           Create Transaction
         </h2>
       </div>
+      {error && (
+        <div className="bg-white border-4 mx-auto my-2 border-red-500 text-red-500 px-1 py-4 flex justify-center text-[18px] w-[30%] rounded-md">
+          {error}
+        </div>
+      )}
+      {message && (
+        <div className="bg-white border-4 mx-auto my-2 border-teal-600 text-teal-600 px-1 py-4 flex justify-center text-[18px] w-[30%] rounded-md">
+          {message}
+        </div>
+      )}
       <div className="flex justify-center w-[40%]  bg-teal-600 p-4 rounded-md  m-auto ">
         <form
           onSubmit={handleSubmit}
           className="text-white flex flex-col gap-4 w-[40%] border border-white p-4 rounded-lg my-6"
         >
-          {error && <p>{error}</p>}
-          {message && <p>{message}</p>}
           <div className="flex justify-center gap-2 w-full">
             <label htmlFor="sender" className="text-[14px] font-bold">
               Sender:
@@ -66,7 +78,7 @@ const TransactionForm: React.FC = () => {
               type="text"
               value={sender}
               onChange={(e) => setSender(e.target.value)}
-              className="outline-none bg-white w-full text-black rounded-md"
+              className="outline-none bg-white w-full text-black rounded-md pl-2"
             />
           </div>
           <div className="flex justify-center gap-2 w-full">
@@ -77,7 +89,7 @@ const TransactionForm: React.FC = () => {
               type="text"
               value={receiver}
               onChange={(e) => setReceiver(e.target.value)}
-              className="outline-none bg-white w-full text-black rounded-md"
+              className="outline-none bg-white w-full text-black rounded-md pl-2"
             />
           </div>
           <div className="flex justify-center gap-2 w-full">
@@ -88,7 +100,7 @@ const TransactionForm: React.FC = () => {
               type="number"
               value={value}
               onChange={(e) => setValue(Number(e.target.value))}
-              className="outline-none bg-white w-full text-black rounded-md"
+              className="outline-none bg-white w-full text-black rounded-md pl-2"
             />
           </div>
           <button
