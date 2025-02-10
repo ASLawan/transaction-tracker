@@ -7,6 +7,15 @@ export const createTransaction = async (req: Request, res: Response) => {
   try {
     const { value, timestamp, receiver, sender } = req.body;
 
+    // All fields are required
+    if (!value || !sender || !receiver) {
+      res.status(400).json({
+        status: "failure",
+        message: "All form fields are required",
+      });
+      return;
+    }
+
     const newTransaction = await Transaction.create({
       value,
       timestamp,

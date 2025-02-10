@@ -1,6 +1,7 @@
 import schedule from "node-schedule";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import Transaction from "../models/transaction";
 
 const baseUrl = "http://localhost:5000/api/transactions";
 
@@ -55,10 +56,20 @@ const createTransaction = async () => {
 // function to update transaction confirmed status after creation
 const updateTransactionStatus = async (transactionId: string) => {
   try {
-    await api.put(`/update/${transactionId}`, { confirmed: true });
+    const taction = await Transaction.findByPk(transactionId);
+
+    if (!taction) {
+      console.log("Transaction not found!");
+      return;
+    }
+
+    const updated = await api.put(`/update/${transactionId}`, {
+      ...taction,
+      confirmed: true,
+    });
 
     console.log(
-      `Transaction with id: ${transactionId}, confirmed status updated to 'true'`
+      `Transaction with id: ${transactionId}, confirmed status updated to 'true' ${updated}`
     );
   } catch (error: any) {
     console.log("Error updating transaction confirmed status: ", error);
