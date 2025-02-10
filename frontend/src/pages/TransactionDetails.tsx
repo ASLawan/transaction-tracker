@@ -51,8 +51,14 @@ const TransactionDetails: React.FC = () => {
   }, [id]);
   return (
     <>
-      <div>
-        <h2>Transction Details.</h2>
+      <div className="flex flex-col justify-center items-center p-4">
+        <h2 className="p-4 text-teal-700 font-bold text-[50px]">
+          Transction Details.
+        </h2>
+        <p className="text-lg">
+          <span className="text-teal-700 font-bold">Transaction ID:</span>{" "}
+          {transaction.id}
+        </p>
       </div>
       <div>
         {loading && <p>Loading Transction....</p>}
@@ -60,24 +66,32 @@ const TransactionDetails: React.FC = () => {
         {/* <p>
           <strong>ID:</strong> {transaction.id}
         </p> */}
-        <p>
-          <strong>Sender:</strong> {transaction.sender}
-        </p>
-        <p>
-          <strong>Receiver:</strong> {transaction.receiver}
-        </p>
-        <p>
-          <strong>Value:</strong> ${transaction.value}
-        </p>
-        <p>
-          <strong>Timestamp:</strong>{" "}
-          {new Date(transaction.timestamp).toLocaleString()}
-        </p>
-        <p>
-          <strong>Confirmed:</strong> {transaction.confirmed ? "Yes" : "No"}
-        </p>
+        <div className="flex flex-col items-center w-[40%] m-auto gap-4">
+          <p>
+            <strong className="font-bold text-teal-700 mr-4">Sender:</strong>{" "}
+            {transaction.sender}
+          </p>
+          <p>
+            <strong className="font-bold text-teal-700 mr-4">Receiver:</strong>{" "}
+            {transaction.receiver}
+          </p>
+          <p>
+            <strong className="font-bold text-teal-700 mr-4">Value:</strong> $
+            {transaction.value}
+          </p>
+          <p>
+            <strong className="font-bold text-teal-700 mr-4">Timestamp:</strong>{" "}
+            {new Date(transaction.timestamp).toLocaleString()}
+          </p>
+          <p>
+            <strong className="font-bold text-teal-700 mr-4">Confirmed:</strong>{" "}
+            {transaction.confirmed ? "Yes" : "No"}
+          </p>
+        </div>
       </div>
-      <Link to={"/"}>Back to Transactions</Link>
+      <div className="flex justify-center mx-auto font-semibold mt-8 bg-teal-700 text-white rounded-md hover:bg-white hover:text-teal-700 w-fit px-4 py-1 cursor-pointer">
+        <Link to={"/"}>Back to Transactions</Link>
+      </div>
     </>
   );
 };

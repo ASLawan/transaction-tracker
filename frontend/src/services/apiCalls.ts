@@ -9,7 +9,7 @@ type Transaction = {
 };
 
 // Base url
-const baseUrl = "http://localhost:5000/api/transactions";
+export const baseUrl = "http://localhost:5000/api/transactions";
 
 export const api = axios.create({
   baseURL: baseUrl,
@@ -19,8 +19,8 @@ export const api = axios.create({
 });
 
 // Get all transactions from the database
-export const getAllTransactions = async () => {
-  const response = await api.get("/getAll");
+export const getAllTransactions = async (search: string = "") => {
+  const response = await api.get("/getAll", { params: { search: search } });
 
   return response.data;
 };
@@ -44,7 +44,7 @@ export const updateTransaction = async (
   id: string,
   updates: Partial<Transaction>
 ) => {
-  const response = await api.put(`/${id}`, updates);
+  const response = await api.put(`/update/${id}`, updates);
   return response.data;
 };
 

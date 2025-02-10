@@ -46,36 +46,59 @@ const TransactionForm: React.FC = () => {
   };
   return (
     <div>
-      <h2>Create Transaction</h2>
-      <form onSubmit={handleSubmit}>
-        {error && <p>{error}</p>}
-        {message && <p>{message}</p>}
-        <div>
-          <label htmlFor="sender">Sender:</label>
-          <input
-            type="text"
-            value={sender}
-            onChange={(e) => setSender(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="receiver">Receiver:</label>
-          <input
-            type="text"
-            value={receiver}
-            onChange={(e) => setReceiver(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="value">Value: </label>
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => setValue(Number(e.target.value))}
-          />
-        </div>
-        <button type="submit">Create</button>
-      </form>
+      <div className="flex justify-center items-center p-8">
+        <h2 className="p-4 text-teal-700 font-bold text-[50px]">
+          Create Transaction
+        </h2>
+      </div>
+      <div className="flex justify-center w-[40%]  bg-teal-600 p-4 rounded-md  m-auto ">
+        <form
+          onSubmit={handleSubmit}
+          className="text-white flex flex-col gap-4 w-[40%] border border-white p-4 rounded-lg my-6"
+        >
+          {error && <p>{error}</p>}
+          {message && <p>{message}</p>}
+          <div className="flex justify-center gap-2 w-full">
+            <label htmlFor="sender" className="text-[14px] font-bold">
+              Sender:
+            </label>
+            <input
+              type="text"
+              value={sender}
+              onChange={(e) => setSender(e.target.value)}
+              className="outline-none bg-white w-full text-black rounded-md"
+            />
+          </div>
+          <div className="flex justify-center gap-2 w-full">
+            <label htmlFor="receiver" className="text-[14px] font-bold">
+              Receiver:
+            </label>
+            <input
+              type="text"
+              value={receiver}
+              onChange={(e) => setReceiver(e.target.value)}
+              className="outline-none bg-white w-full text-black rounded-md"
+            />
+          </div>
+          <div className="flex justify-center gap-2 w-full">
+            <label htmlFor="value" className="text-[14px] font-bold">
+              Value:{" "}
+            </label>
+            <input
+              type="number"
+              value={value}
+              onChange={(e) => setValue(Number(e.target.value))}
+              className="outline-none bg-white w-full text-black rounded-md"
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-white text-teal-600 font-bold hover:bg-teal-600 hover:text-white rounded-md cursor-pointer"
+          >
+            Create
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
