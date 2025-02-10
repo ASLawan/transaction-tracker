@@ -1,9 +1,10 @@
-import express, { Application } from "express";
+import express, { application, Application } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import { testDBConnection } from "./config/conn";
 import transactionRoutes from "./routes/transactionRoutes";
+import { setupSwagger } from "./config/swagger";
 
 dotenv.config(); // retrieve env variables from .env file
 
@@ -14,6 +15,9 @@ const HOST = process.env.HOST || "localhost";
 // Middlware
 app.use(cors());
 app.use(express.json());
+
+//Setup Swagger
+setupSwagger(app);
 
 testDBConnection();
 // testTransaction();
