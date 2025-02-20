@@ -1,7 +1,15 @@
-import { Model, DataTypes } from "sequelize";
+import {
+  Model,
+  DataTypes,
+  InferAttributes,
+  InferCreationAttributes,
+} from "sequelize";
 import { sequelize } from "../config/conn";
 
-class Transaction extends Model {
+class Transaction extends Model<
+  InferAttributes<Transaction>,
+  InferCreationAttributes<Transaction>
+> {
   public id!: string;
   public value!: number;
   public timestamp!: number;
