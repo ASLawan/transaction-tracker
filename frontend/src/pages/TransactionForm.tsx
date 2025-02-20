@@ -68,7 +68,7 @@ const TransactionForm: React.FC = () => {
       <div className="flex justify-center w-[40%]  bg-teal-600 p-4 rounded-md  m-auto ">
         <form
           onSubmit={handleSubmit}
-          className="text-white flex flex-col gap-4 w-[40%] border border-white p-4 rounded-lg my-6"
+          className="text-white flex flex-col gap-4 w-[70%] border border-white p-4 rounded-lg my-6"
         >
           <div className="flex justify-center gap-2 w-full">
             <label htmlFor="sender" className="text-[14px] font-bold">

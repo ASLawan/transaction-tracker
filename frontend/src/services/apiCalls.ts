@@ -9,7 +9,7 @@ type Transaction = {
 };
 
 // Base url
-export const baseUrl = "http://localhost:5000/api/transactions";
+export const baseUrl = import.meta.env.VITE_API_BASE_URL; // "http://localhost:5000/api/transactions";
 
 export const api = axios.create({
   baseURL: baseUrl,
