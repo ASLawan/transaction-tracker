@@ -48,11 +48,13 @@
 
 "use strict";
 
-const { QueryInterface, DataTypes } = require("sequelize");
+import { QueryInterface, DataTypes } from "sequelize";
+
+// const { QueryInterface, DataTypes } = require("sequelize");
 
 /** @param {QueryInterface} queryInterface */
 module.exports = {
-  up: async (queryInterface) => {
+  up: async (queryInterface: QueryInterface) => {
     await queryInterface.createTable("transactions", {
       id: {
         type: DataTypes.UUID,
@@ -92,7 +94,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface) => {
+  down: async (queryInterface: QueryInterface) => {
     await queryInterface.dropTable("transactions");
   },
 };
