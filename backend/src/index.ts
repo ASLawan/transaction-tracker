@@ -28,7 +28,8 @@ app.get("/", (req, res) => {
 });
 
 // transaction Routes
-app.use("/api/transactions/", transactionRoutes);
+let baseURL = "https://transaction-tracker-gkfw.onrender.com";
+app.use(`${baseURL}/api/transactions/`, transactionRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on ${HOST}, port: ${PORT} `);
