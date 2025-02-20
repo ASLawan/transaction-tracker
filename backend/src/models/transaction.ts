@@ -8,7 +8,7 @@ import { sequelize } from "../config/conn";
 
 class Transaction extends Model<
   InferAttributes<Transaction>,
-  InferCreationAttributes<Transaction>
+  InferCreationAttributes<Transaction, { omit: "id" | "confirmed" }>
 > {
   public id!: string;
   public value!: number;
