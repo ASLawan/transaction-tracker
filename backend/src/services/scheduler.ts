@@ -3,7 +3,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Transaction from "../models/transaction";
 
-const baseUrl = "http://localhost:5000/api/transactions";
+const baseUrl = "https://transaction-tracker-gkfw.onrender.com"; // "http://localhost:5000/api/transactions";
 
 const api = axios.create({
   baseURL: baseUrl,
