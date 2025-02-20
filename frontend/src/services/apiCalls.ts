@@ -11,7 +11,7 @@ type Transaction = {
 // Base url
 export const baseUrl =
   import.meta.env.VITE_API_BASE_URL ||
-  "https://transaction-tracker-gkfw.onrender.com"; // "http://localhost:5000/api/transactions";
+  "https://transaction-tracker-gkfw.onrender.com/api/transactions"; // "http://localhost:5000/api/transactions";
 
 export const api = axios.create({
   baseURL: baseUrl,
