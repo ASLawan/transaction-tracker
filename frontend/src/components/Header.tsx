@@ -6,7 +6,7 @@ import "../index.css";
 const Header = () => {
   return (
     <header className="bg-teal-700 p-4 h-[120px] content-center">
-      <div className="flex justify-between items-center max-w-6xl mx-auto sm:w-full sm:justify-center">
+      <div className="flex flex-col w-full mx-auto justify-center items-center sm:flex sm:flex-row sm:justify-around">
         <h1 className="font-bold text-white text-3xl hover:text-gray-300">
           <Link to={"/"}>Transaction Tracker</Link>
         </h1>

@@ -51,20 +51,20 @@ const Dashboard: React.FC = () => {
     });
   return (
     <>
-      <div className="flex justify-center items-center content-center p-4 text-teal-700 font-bold text-[50px]">
+      <div className="flex flex-wrap justify-center items-center  p-4 text-teal-700 font-bold text-[30px] sm:text-[50px]">
         <h2>List of Transactions.</h2>
       </div>
-      <div className="bg-teal-600 border-b border-white p-4 flex justify-around">
+      <div className="bg-teal-600 border-b border-white p-4 flex flex-col justify-center gap-2 sm:flex sm:flex-row sm:justify-around">
         <input
           type="text"
           placeholder="Search trannsaction here...."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="outline-none rounded-full h-8 bg-white w-[40%] text-black pl-4"
+          className="outline-none rounded-full h-8 bg-white w-full text-black pl-4 sm:max-w-[400px]"
         />
         <button
           onClick={() => setShowConfirm((prev) => !prev)}
-          className="bg-white px-4 py-1 rounded-full text-teal-600 font-bold cursor-pointer"
+          className="bg-white px-4 py-1 rounded-full text-teal-600 font-bold cursor-pointer w-full sm:w-fit"
         >
           {showConfirmed ? "All Transactions" : "Confirmed Transactions"}
         </button>
