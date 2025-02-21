@@ -35,7 +35,7 @@ dotenv.config();
 // Use DATABASE_URL if available (for Render deployment)
 const databaseUrl =
   process.env.DATABASE_URL ||
-  "postgresql://transactions_n1cz_user:wxtXH5lVTqW8keJVLExcVYcPjotpX29Y@dpg-curhvrpopnds73f2veig-a/transactions_n1cz";
+  "postgresql://super_admin:O585oT4dHckChGT9X3JWyGplpWuEn2pK@dpg-curu93l6l47c73a34qc0-a:5432/transactions_b0fn";
 
 export const sequelize = databaseUrl
   ? new Sequelize(databaseUrl, {
