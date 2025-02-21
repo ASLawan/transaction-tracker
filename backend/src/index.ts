@@ -23,9 +23,9 @@ testDBConnection();
 // testTransaction();
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Transaction Tracking Systen API");
-});
+// app.get("/", (req, res) => {
+//   res.send("Transaction Tracking Systen API");
+// });
 
 // transaction Routes
 app.use("/api/transactions/", transactionRoutes);
