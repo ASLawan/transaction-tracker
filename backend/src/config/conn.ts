@@ -32,21 +32,23 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const isProduction = process.env.NODE_ENV === "production";
+
 // Use DATABASE_URL if available (for Render deployment)
-const databaseUrl =
-  process.env.DATABASE_URL ||
-  "postgresql://neondb_owner:npg_LT7dyqMDWC5b@ep-soft-union-a52tn0ro-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require";
+const databaseUrl = process.env.DATABASE_URL;
 
 export const sequelize = databaseUrl
   ? new Sequelize(databaseUrl, {
       dialect: "postgres",
       logging: false,
-      dialectOptions: {
-        ssl: {
-          require: true, // Render requires SSL for PostgreSQL
-          rejectUnauthorized: false, // Prevents self-signed certificate errors
-        },
-      },
+      dialectOptions: isProduction
+        ? {
+            ssl: {
+              require: true, // Render requires SSL for PostgreSQL
+              rejectUnauthorized: false, // Prevents self-signed certificate errors
+            },
+          }
+        : {},
     })
   : new Sequelize(
       process.env.DB_NAME || "transactions_db",
