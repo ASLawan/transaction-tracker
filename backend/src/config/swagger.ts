@@ -13,7 +13,7 @@ const swaggerOptions: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: "http://localhost:5000/api/transactions", // Change this to your deployed URL when live
+        url: "https://transaction-tracker-gkfw.onrender.com/api/transactions", // Change this to your deployed URL when live
       },
     ],
   },
