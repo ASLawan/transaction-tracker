@@ -35,7 +35,7 @@ dotenv.config();
 // Use DATABASE_URL if available (for Render deployment)
 const databaseUrl =
   process.env.DATABASE_URL ||
-  "postgresql://super_admin:O585oT4dHckChGT9X3JWyGplpWuEn2pK@dpg-curu93l6l47c73a34qc0-a/transactions_b0fn";
+  "postgresql://neondb_owner:npg_LT7dyqMDWC5b@ep-soft-union-a52tn0ro-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require";
 
 export const sequelize = databaseUrl
   ? new Sequelize(databaseUrl, {
