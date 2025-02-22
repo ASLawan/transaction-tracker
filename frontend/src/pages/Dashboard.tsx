@@ -64,51 +64,68 @@ const Dashboard: React.FC = () => {
         />
         <button
           onClick={() => setShowConfirm((prev) => !prev)}
-          className="bg-white px-4 py-1 rounded-full text-teal-600 font-bold cursor-pointer w-full sm:w-fit"
+          className="bg-white py-1 rounded-full text-teal-600 font-bold cursor-pointer w-full sm:w-fit min-w-[220px] text-center"
         >
           {showConfirmed ? "All Transactions" : "Confirmed Transactions"}
         </button>
       </div>
-      <table className="bg-white w-full border-collapse table-auto">
-        <thead className="bg-teal-600">
-          <tr className="text-white font-bold text-[20px] h-16">
-            <th>Sender</th>
-            <th>Receiver</th>
-            <th>Value</th>
-            <th>Timestamp</th>
-            <th>Confirmed</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTransactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <th className="border-b border-b-teal-500 h-12">
-                {transaction.sender}
+      <div className="overflow-x-auto">
+        <table className="bg-white w-full border-collapse table-auto sm:table">
+          <thead className="bg-teal-600 sm:table-header-group hidden">
+            <tr className="text-white font-bold text-[20px] h-16">
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Sender
               </th>
-              <th className="border-b border-b-teal-500">
-                {transaction.receiver}
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Receiver
               </th>
-              <th className="border-b border-b-teal-500">
-                {transaction.value}
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Value
               </th>
-              <th className="border-b border-b-teal-500">
-                {transaction.timestamp}
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Timestamp
               </th>
-              <th
-                className={`border-b border-b-teal-500 ${
-                  transaction.confirmed ? "bg-teal-100" : "bg-red-100"
-                }`}
-              >{`${transaction.confirmed ? "Success" : "Pending..."} `}</th>
-              <th className="border-b border-b-teal-500 bg-teal-600 text-white hover:bg-white hover:text-teal-700">
-                <Link to={`/detail-transaction/${transaction.id}`}>
-                  Details
-                </Link>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Confirmed
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Details
               </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredTransactions.map((transaction) => (
+              <tr
+                key={transaction.id}
+                className="sm:table-row flex flex-col sm:flex-row border-b"
+              >
+                <th className="border border-gray-300 px-4 py-2 sm:table-cell">
+                  {transaction.sender}
+                </th>
+                <th className="border border-gray-300 px-4 py-2 sm:table-cell">
+                  {transaction.receiver}
+                </th>
+                <th className="border border-gray-300 px-4 py-2 sm:table-cell">
+                  {transaction.value}
+                </th>
+                <th className="border border-gray-300 px-4 py-2 sm:table-cell">
+                  {transaction.timestamp}
+                </th>
+                <th
+                  className={`border border-gray-300 px-4 py-2 sm:table-cell ${
+                    transaction.confirmed ? "bg-teal-100" : "bg-red-100"
+                  }`}
+                >{`${transaction.confirmed ? "Success" : "Pending..."} `}</th>
+                <th className="border-b border-b-teal-500 bg-teal-600 text-white hover:bg-white hover:text-teal-700">
+                  <Link to={`/detail-transaction/${transaction.id}`}>
+                    Details
+                  </Link>
+                </th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

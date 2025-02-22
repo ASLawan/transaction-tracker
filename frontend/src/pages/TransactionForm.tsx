@@ -50,25 +50,27 @@ const TransactionForm: React.FC = () => {
   };
   return (
     <div>
-      <div className="flex justify-center items-center p-8">
+      <div className="flex justify-center items-center px-8">
         <h2 className="p-4 text-teal-700 font-bold text-[50px]">
           Create Transaction
         </h2>
       </div>
-      {error && (
-        <div className="bg-white border-4 mx-auto my-2 border-red-500 text-red-500 px-1 py-4 flex justify-center text-[18px] w-[30%] rounded-md">
-          {error}
-        </div>
-      )}
-      {message && (
-        <div className="bg-white border-4 mx-auto my-2 border-teal-600 text-teal-600 px-1 py-4 flex justify-center text-[18px] w-[30%] rounded-md">
-          {message}
-        </div>
-      )}
-      <div className="flex justify-center w-[80%]  bg-teal-600 p-4 rounded-md  mx-auto ">
+      <div className="w-full h-[2rem]">
+        {error && (
+          <div className="bg-white border-4 mx-auto border-red-500 text-red-500 px-1 flex justify-center text-[18px] w-[30%] rounded-md">
+            {error}
+          </div>
+        )}
+        {message && (
+          <div className="bg-white border-4 mx-auto border-teal-600 text-teal-600 px-1 flex justify-center text-[18px] w-[30%] rounded-md">
+            {message}
+          </div>
+        )}
+      </div>
+      <div className="flex justify-center w-[80%] sm:w-[40%] bg-teal-600 p-4 rounded-md  mx-auto mt-[1rem]">
         <form
           onSubmit={handleSubmit}
-          className="text-white flex flex-col gap-4 w-full border border-white p-4 rounded-lg my-6"
+          className="text-white flex flex-col gap-4 w-full  border border-white p-4 rounded-lg my-6"
         >
           <div className="flex justify-center gap-2 w-full">
             <label htmlFor="sender" className="text-[14px] font-bold">
